@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel>
+<schema name="public" protected="true" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<database name="smartpool" encoding="UTF8" lc-collate="Portuguese_Brazil" lc-ctype="Portuguese_Brazil">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<sequence name="users_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="users">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="60"/>
+	<column name="id" not-null="true" default-value="nextval('users_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="login" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="password" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="email" not-null="true">
+		<type name="character varying" length="150"/>
+	</column>
+	<constraint name="user_pk" type="pk-constr" factor="100" table="public.users">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="question_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="question">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="400" y="380"/>
+	<column name="id" not-null="true" default-value="nextval('question_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="title" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="question" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="user_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="date_question" not-null="true" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+	<column name="expiration_date" not-null="true">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="question_pk" type="pk-constr" factor="100" table="public.question">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="answer_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="answer">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="405" y="60"/>
+	<column name="id" not-null="true" default-value="nextval('answer_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="question_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="answer_id" not-null="true">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="date_vote" not-null="true" default-value="now()">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="answer_pk" type="pk-constr" factor="100" table="public.answer">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="result_id_seq"
+	 start="1" increment="1"
+	 min-value="1" max-value="9223372036854775807"
+	 cache="1" cycle="false">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="result">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="918" y="65"/>
+	<column name="id" not-null="true" default-value="nextval('result_id_seq'::regclass)">
+		<type name="integer"/>
+	</column>
+	<column name="question_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="answer_id" not-null="true">
+		<type name="integer"/>
+	</column>
+	<constraint name="result_pk" type="pk-constr" factor="100" table="public.result">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="user_fk" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.users" table="public.question">
+	<columns names="user_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="question_fk" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.question" table="public.answer">
+	<columns names="question_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="question_fk" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.question" table="public.result">
+	<columns names="question_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+<constraint name="answer_fk" type="fk-constr"	 comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.answer" table="public.result">
+	<columns names="answer_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+<relationship name="rel_question_users" type="relfk"
+	 src-table="public.question"
+	 dst-table="public.users"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_answer_question" type="relfk"
+	 src-table="public.answer"
+	 dst-table="public.question"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_result_question" type="relfk"
+	 src-table="public.result"
+	 dst-table="public.question"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_result_answer" type="relfk"
+	 src-table="public.result"
+	 dst-table="public.answer"
+	 src-required="true" dst-required="true"/>
+
+</dbmodel>
