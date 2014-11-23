@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
-	version="1.0">
-	<persistence-unit name="SMARTPOLL"
+	version="2.1">
+	<persistence-unit name="smartpoll"
 		transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>br.edu.univas.lab6.entity.Answer</class>
+		<class>br.edu.univas.lab6.entity.Question</class>
+		<class>br.edu.univas.lab6.entity.Result</class>
+		<class>br.edu.univas.lab6.entity.Users</class>
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<!--configuracao da conexao com o banco -->
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"></property>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/smartpoll"></property>
 			<property name="javax.persistence.jdbc.user" value="postgres"></property>
 			<property name="javax.persistence.jdbc.password" value="database"></property>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"></property>
 		</properties>
 	</persistence-unit>
 </persistence>
-
-
-
-
-
-
