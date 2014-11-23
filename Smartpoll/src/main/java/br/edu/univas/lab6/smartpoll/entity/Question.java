@@ -1,4 +1,4 @@
-package br.edu.univas.lab6.entity;
+package br.edu.univas.lab6.smartpoll.entity;
 
 import java.util.Date;
 import java.util.HashSet;
