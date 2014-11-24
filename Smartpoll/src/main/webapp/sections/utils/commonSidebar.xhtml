@@ -4,33 +4,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Inicial</title>
-</h:head>
+
 <h:body>
-		<p:layoutUnit position="north" size="100">
-			<h:outputText value="Header" />
-		</p:layoutUnit>
-
-		<p:layoutUnit position="south" size="50">
-			<h:outputText value="Footer" />
-		</p:layoutUnit>
-
-		<p:layoutUnit position="west" size="200">
-			<h:outputText value="Menu" />
+	<ui:composition>
 			<h:form>
 				<p:growl id="messages" showDetail="false" />
-
-				<h3 style="margin-top: 0">Plain Menu</h3>
 				<p:menu>
 					<p:submenu label="Ajax">
-						<p:menuitem value="Save" actionListener="#{menuView.save}"
+						<p:menuitem value="Save" actionListener="#{sidebarView.save}"
 							update="messages" icon="ui-icon-disk" />
-						<p:menuitem value="Update" actionListener="#{menuView.update}"
+						<p:menuitem value="Update" actionListener="#{sidebarView.update}"
 							update="messages" icon="ui-icon-arrowrefresh-1-w" />
 					</p:submenu>
 					<p:submenu label="Non-Ajax">
-						<p:menuitem value="Delete" actionListener="#{menuView.delete}"
+						<p:menuitem value="Delete" actionListener="#{sidebarView.delete}"
 							update="messages" ajax="false" icon="ui-icon-close" />
 					</p:submenu>
 					<p:submenu label="Navigations">
@@ -41,12 +28,6 @@
 					</p:submenu>
 				</p:menu>
 			</h:form>
-		</p:layoutUnit>
-
-		<p:layoutUnit position="center">
-        //page code
-	    </p:layoutUnit>
-	
-
+	</ui:composition>
 </h:body>
 </html>
