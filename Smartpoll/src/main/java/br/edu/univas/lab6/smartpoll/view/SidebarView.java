@@ -11,7 +11,7 @@ import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
 
 @ManagedBean
-public class MenuView {
+public class SidebarView {
 	
 	private MenuModel model;
 
