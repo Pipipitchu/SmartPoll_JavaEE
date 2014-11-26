@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="common-style.css" />
+</h:head>
+
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="100">
+			<h1>Smartpoll</h1>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="200">
+			<ui:insert name="menu">
+				<h:form>
+					<p:menu style="width: 180px">
+						<p:submenu label="Dashboard">
+							<p:menuitem value="Polls" icon="ui-icon-star" />
+							<p:menuitem value="Insert poll" icon="ui-icon-plus" />
+							<p:menuitem value="Results" icon="ui-icon-clipboard" />
+						</p:submenu>
+						<p:submenu label="Account">
+							<p:menuitem value="Change password" icon="ui-icon-key" />
+							<p:menuitem value="logoff" icon="ui-icon-locked" />
+						</p:submenu>
+					</p:menu>
+				</h:form>
+			</ui:insert>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<ui:insert name="content">
+				//page code
+			</ui:insert>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="30">
+			<center>© Copyright 2014 SmartPoll</center>
+		</p:layoutUnit>
+
+
+
+	</p:layout>
+</h:body>
+</html>

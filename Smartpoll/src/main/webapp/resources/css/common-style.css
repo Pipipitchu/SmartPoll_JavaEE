@@ -1,0 +1,11 @@
+@CHARSET "ISO-8859-1";
+
+.ui-layout-container {
+	margin: 10px 10px 10px 10px !important;
+	min-height: 400px;
+	
+}
+
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 13px !important;
+}
