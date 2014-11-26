@@ -1,11 +1,11 @@
-package br.edu.univas.lab6.smartpoll.view;
+package br.edu.univas.lab6.smartpoll.controller;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
-public class MenubarView {
+public class HeaderController {
 
 	public void save() {
 		addMessage("Success", "Data saved");

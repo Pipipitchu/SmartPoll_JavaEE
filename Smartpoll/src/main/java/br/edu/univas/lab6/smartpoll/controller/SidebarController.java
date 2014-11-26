@@ -1,4 +1,4 @@
-package br.edu.univas.lab6.smartpoll.view;
+package br.edu.univas.lab6.smartpoll.controller;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -11,7 +11,7 @@ import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
 
 @ManagedBean
-public class SidebarView {
+public class SidebarController {
 	
 	private MenuModel model;
 
