@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Insert Poll</title>
+</h:head>
+
+<ui:decorate template="/template/layout.xhtml">
+	<ui:define name="content">
+		<h:form style="width: 900px; margin: auto auto auto auto">
+			<p:panel id="panel" header="Insert Poll" style="margin-bottom:10px;">
+				<p:messages id="messages" />
+				<h:panelGrid columns="1" cellpadding="5">
+					<h:outputLabel for="title" value="Title: "/>
+					<p:inputText type="text" name="title" size="100"
+						placeholder="Enter Title" required="true"
+						requiredMessage="Please, Insert the Title" />
+
+					<h:outputLabel for="date" value="Expiration Date: " />
+					<p:calendar value="#{calendarView.date9}" pattern="dd-MM-yyyy"
+						mask="true" size="100" placeholder="__-__-____"/>
+
+					<h:outputLabel for="question" value="Question: "/>
+					<p:inputText type="text" name="question" size="100"
+						placeholder="Enter Question" required="true"
+						requiredMessage="Please, Insert the Question" />
+
+					<h:outputLabel for="answer" value="Answer:" />
+					<p:inputText type="text" name="answer[]" size="100"
+						placeholder="Enter Answer" required="true"
+						requiredMessage="Please, Insert the Answer" />
+
+					<h:outputLabel for="answer"  value="Answer:" />
+					<p:inputText type="text" name="answer[]" size="100"
+						placeholder="Enter Answer" required="true"
+						requiredMessage="Please, Insert the Answer" />
+
+					<h:outputLabel for="answer"  value="Answer:" />
+					<p:inputText type="text" name="answer[]" size="100"
+						placeholder="Enter Answer" required="true"
+						requiredMessage="Please, Insert the Answer" />
+
+				</h:panelGrid>
+			</p:panel>
+
+			<p:commandButton type="submit" value="Sign In" update="panel" />
+			<p:commandButton type="reset" value="Cancel" update="panel" />
+		</h:form>
+	</ui:define>
+</ui:decorate>
+
+</html>
