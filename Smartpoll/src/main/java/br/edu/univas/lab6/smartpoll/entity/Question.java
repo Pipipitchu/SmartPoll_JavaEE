@@ -29,7 +29,7 @@ public class Question implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+		
 	private int id;
 	private Users users;
 	private String title;

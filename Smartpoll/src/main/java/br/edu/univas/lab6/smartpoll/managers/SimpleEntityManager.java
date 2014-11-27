@@ -5,16 +5,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class SimpleEntityManager {
-	private EntityManager entityManager;
-	private EntityManagerFactory factory;
+	private EntityManager entityManager;	
+	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory("smartpoll");
 
-	public SimpleEntityManager(EntityManagerFactory factory) {
-		this.factory = factory;
-		this.entityManager = factory.createEntityManager();
-	}
-
-	public SimpleEntityManager(String persistenceUnitName) {
-		factory = Persistence.createEntityManagerFactory(persistenceUnitName);
+	public SimpleEntityManager() {
 		this.entityManager = factory.createEntityManager();
 	}
 

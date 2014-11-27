@@ -8,17 +8,16 @@ public class MainClass {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String persistenceUnitName = "SMARTPOLL";
+		//String persistenceUnitName = "smartpoll";
 
-		SimpleEntityManager simpleEntityManager = new SimpleEntityManager(
-				persistenceUnitName);
+		SimpleEntityManager simpleEntityManager = new SimpleEntityManager();
 		
 		Users users = new Users();
 		
-	users.setName("camila");
-		users.setLogin("camilab");
-		users.setPassword("teste");
-		users.setEmail("camila@gmail.com");
+	    users.setName("emilio");
+		users.setLogin("emilios");
+		users.setPassword("em");
+		users.setEmail("emilio@gmail.com");
 		
 		
 		UsersService usersService = new UsersService(simpleEntityManager);
