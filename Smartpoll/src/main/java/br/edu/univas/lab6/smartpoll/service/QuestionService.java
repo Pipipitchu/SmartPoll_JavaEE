@@ -26,7 +26,6 @@ public class QuestionService {
 			e.printStackTrace();
 			simpleEntityManager.rollBack();
 		}
-		simpleEntityManager.close();
 	}
 
 	public void delete(Question question) {
@@ -38,7 +37,6 @@ public class QuestionService {
 			e.printStackTrace();
 			simpleEntityManager.rollBack();
 		}
-		simpleEntityManager.close();
 	}
 
 	public List<Question> findAll() {

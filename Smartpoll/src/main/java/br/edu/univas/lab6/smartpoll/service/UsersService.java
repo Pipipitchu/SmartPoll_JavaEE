@@ -26,7 +26,6 @@ public class UsersService {
 			e.printStackTrace();
 			simpleEntityManager.rollBack();
 		}
-		simpleEntityManager.close();
 	}
 	
 	public void delete(Users users) {
@@ -38,7 +37,6 @@ public class UsersService {
 			e.printStackTrace();
 			simpleEntityManager.rollBack();
 		}
-		simpleEntityManager.close();
 	}
 
 	public List<Users> findAll() {
