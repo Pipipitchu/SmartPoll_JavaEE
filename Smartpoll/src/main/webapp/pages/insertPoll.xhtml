@@ -10,37 +10,37 @@
 </h:head>
 
 <ui:decorate template="/template/layout.xhtml">
-	<ui:define name="content">
-		<h:form style="width: 900px; margin: auto auto auto auto">
+	<ui:define name="content" size="300">
+		<h:form style="margin: auto auto auto auto">
 			<p:panel id="panel" header="Insert Poll" style="margin-bottom:10px;">
 				<p:messages id="messages" />
 				<h:panelGrid columns="1" cellpadding="5">
 					<h:outputLabel for="title" value="Title: "/>
-					<p:inputText type="text" name="title" size="100"
+					<p:inputText id="title" type="text" name="title" size="85"
 						placeholder="Enter Title" required="true"
 						requiredMessage="Please, Insert the Title" />
 
 					<h:outputLabel for="date" value="Expiration Date: " />
-					<p:calendar value="#{calendarView.date9}" pattern="dd-MM-yyyy"
-						mask="true" size="100" placeholder="__-__-____"/>
+					<p:calendar id="date" value="#{calendarView.date9}" pattern="dd-MM-yyyy"
+						mask="true" size="85" placeholder="__-__-____"/>
 
 					<h:outputLabel for="question" value="Question: "/>
-					<p:inputText type="text" name="question" size="100"
+					<p:inputText id="question" type="text" name="question" size="85"
 						placeholder="Enter Question" required="true"
 						requiredMessage="Please, Insert the Question" />
 
-					<h:outputLabel for="answer" value="Answer:" />
-					<p:inputText type="text" name="answer[]" size="100"
+					<h:outputLabel for="answer1" value="Answer:" />
+					<p:inputText id="answer1" type="text" name="answer[]" size="85"
 						placeholder="Enter Answer" required="true"
 						requiredMessage="Please, Insert the Answer" />
 
-					<h:outputLabel for="answer"  value="Answer:" />
-					<p:inputText type="text" name="answer[]" size="100"
+					<h:outputLabel for="answer2"  value="Answer:" />
+					<p:inputText id="answer2" type="text" name="answer[]" size="85"
 						placeholder="Enter Answer" required="true"
 						requiredMessage="Please, Insert the Answer" />
 
-					<h:outputLabel for="answer"  value="Answer:" />
-					<p:inputText type="text" name="answer[]" size="100"
+					<h:outputLabel for="answer3"  value="Answer:" />
+					<p:inputText id="answer3" type="text" name="answer[]" size="85"
 						placeholder="Enter Answer" required="true"
 						requiredMessage="Please, Insert the Answer" />
 
