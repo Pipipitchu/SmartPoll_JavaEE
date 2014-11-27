@@ -1,9 +1,14 @@
 @CHARSET "ISO-8859-1";
 
 .ui-layout-container {
-	margin: 10px 10px 10px 10px !important;
+	margin: 10px auto 10px auto!important;
 	min-height: 400px;
-	
+	max-width:1080px;
+	background: #FFF url("#{resource['images:background.jpg']}") no-repeat fixed center;
+}
+
+.ui-layout-center .ui-widget-content, .ui-layout-north .ui-widget-content{
+	padding:5px 10px 5px 10px !important;
 }
 
 .ui-widget, .ui-widget .ui-widget {
