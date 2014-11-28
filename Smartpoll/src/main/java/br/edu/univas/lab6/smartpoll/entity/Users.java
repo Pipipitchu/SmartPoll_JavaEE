@@ -6,11 +6,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -56,8 +53,6 @@ public class Users implements java.io.Serializable {
 
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
-	@GeneratedValue ( strategy = GenerationType . SEQUENCE ,generator ="users_gen")
-	@SequenceGenerator ( name ="users_gen", sequenceName ="users_id_seq", allocationSize =1)
 	public int getId() {
 		return this.id;
 	}

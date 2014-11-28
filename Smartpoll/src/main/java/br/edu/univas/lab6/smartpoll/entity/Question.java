@@ -7,13 +7,10 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,7 +26,7 @@ public class Question implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-		
+	
 	private int id;
 	private Users users;
 	private String title;
@@ -67,8 +64,6 @@ public class Question implements java.io.Serializable {
 
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
-	@GeneratedValue ( strategy = GenerationType . SEQUENCE ,generator ="question_gen")
-	@SequenceGenerator ( name ="question_gen", sequenceName ="question_id_seq", allocationSize =1)
 	public int getId() {
 		return this.id;
 	}
