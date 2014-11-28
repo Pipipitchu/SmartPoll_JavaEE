@@ -12,7 +12,7 @@ import br.edu.univas.lab6.smartpoll.service.QuestionService;
 
 @ManagedBean(name = "question")
 @SessionScoped
-public class QuestionBean {
+public class ListPollBean {
 
 	private List<Question> questions = new ArrayList<Question>();
 

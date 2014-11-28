@@ -26,6 +26,7 @@ public class ResultService {
 			e.printStackTrace();
 			simpleEntityManager.rollBack();
 		}
+		simpleEntityManager.close();
 	}
 
 	public void delete(Result result) {
@@ -37,9 +38,11 @@ public class ResultService {
 			e.printStackTrace();
 			simpleEntityManager.rollBack();
 		}
+		simpleEntityManager.close();
 	}
 
 	public List<Result> findAll() {
+		simpleEntityManager.beginTransaction();
 		return dao.findAll();
 	}
 }
