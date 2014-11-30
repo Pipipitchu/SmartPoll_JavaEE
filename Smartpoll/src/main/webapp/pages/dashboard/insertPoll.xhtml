@@ -11,43 +11,49 @@
 
 <ui:decorate template="/template/layout.xhtml">
 	<ui:define name="content">
-		<h:form >
+		<h:form id="form-insert">
 			<p:panel id="panel" header="Insert Poll" style="margin-bottom:10px;">
 				<p:messages id="messages" />
-				<h:panelGrid columns="1" cellpadding="5">
-					<h:outputLabel for="title" value="Title: "/>
+				<h:panelGrid id="panel-grid" columns="2" cellpadding="10">
+					<h:outputLabel for="title" value="Title: " />
 					<p:inputText id="title" type="text" name="title" size="85"
 						placeholder="Enter Title" required="true"
-						requiredMessage="Please, Insert the Title" />
+						requiredMessage="Please, Insert the Title" value="#{insert.question.title}"/>
 
 					<h:outputLabel for="date" value="Expiration Date: " />
-					<p:calendar id="date" value="#{calendarView.date9}" pattern="dd-MM-yyyy"
-						mask="true" size="85" placeholder="__-__-____"/>
+					<p:calendar id="date"
+						pattern="dd-MM-yyyy" mask="true" size="85"
+						placeholder="__-__-____" value="#{insert.question.expirationDate}"/>
 
-					<h:outputLabel for="question" value="Question: "/>
+					<h:outputLabel for="question" value="Question: " />
 					<p:inputText id="question" type="text" name="question" size="85"
 						placeholder="Enter Question" required="true"
-						requiredMessage="Please, Insert the Question" />
+						requiredMessage="Please, Insert the Question" value="#{insert.question.question}" />
 
-					<h:outputLabel for="answer1" value="Answer:" />
+					<h:outputLabel for="answer1" value="Answers:" />
 					<p:inputText id="answer1" type="text" name="answer[]" size="85"
 						placeholder="Enter Answer" required="true"
-						requiredMessage="Please, Insert the Answer" />
+						requiredMessage="Please, Insert the Answer" value="#{insert.question.answers}"/>
 
-					<h:outputLabel for="answer2"  value="Answer:" />
+					<h:outputLabel for="answer2" value="" />
 					<p:inputText id="answer2" type="text" name="answer[]" size="85"
 						placeholder="Enter Answer" required="true"
-						requiredMessage="Please, Insert the Answer" />
+						requiredMessage="Please, Insert the Answer" value="#{insert.question.answers}"/>
 
-					<h:outputLabel for="answer3"  value="Answer:" />
+					<h:outputLabel for="answer3" value="" />
 					<p:inputText id="answer3" type="text" name="answer[]" size="85"
 						placeholder="Enter Answer" required="true"
-						requiredMessage="Please, Insert the Answer" />
+						requiredMessage="Please, Insert the Answer" value="#{insert.question.answers}"/>
+
+					<h:outputLabel for="answer4" value="" />
+					<p:inputText id="answer4" type="text" name="answer[]" size="85"
+						placeholder="Enter Answer" required="true"
+						requiredMessage="Please, Insert the Answer" value="#{insert.question.answers}"/>
 
 				</h:panelGrid>
 			</p:panel>
 
-			<p:commandButton type="submit" value="Save" update="panel" />
+			<p:commandButton type="submit" value="Save" update="panel" action="#{insert.insertQuestion(insert.question)}" />
 			<p:commandButton type="reset" value="Cancel" update="panel" />
 		</h:form>
 	</ui:define>
