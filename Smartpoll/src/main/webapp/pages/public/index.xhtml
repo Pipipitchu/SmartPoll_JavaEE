@@ -1,9 +1,57 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
-	<ui:composition template="">
-	</ui:composition>
+<h:head>
+	<h:outputStylesheet library="css" name="style-public.css" />
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['images:favicon.ico']}" />
+	<link rel="icon" type="image/x-icon"
+		href="#{resource['images:favicon.ico']}" />
+	<title>SmartPoll</title>
+</h:head>
+
+
+<h:body>
+	<h1 class="title">SmartPoll</h1>
+
+
+	<h:form id="form">
+		<p:outputPanel id="panelOutput" columns="1" styleClass="panelOutput">
+
+			<h1 class="subtitle">
+				<h:outputText value="#{votation.subtitle}"></h:outputText>
+			</h1>
+
+			<p:panel columns="1" id="panelQuestions" styleClass="panelQuestions"
+				rendered="#{votation.showQuestions}">
+
+				<ui:repeat var="question" value="#{votation.allQuestions}">
+					<p:commandButton value="#{question.title}"
+						update=":form:panelOutput"
+						actionListener="#{votation.updateAnswers(question)}"
+						styleClass="ui-priority-primary pull-right btn btnQuestion" />
+				</ui:repeat>
+
+			</p:panel>
+
+			<p:panel columns="1" id="panelAnswers" styleClass="panelAnswers"
+				rendered="#{votation.showAnswers}">
+				<ui:repeat var="answer" value="#{votation.answers}">
+					<p:commandButton value="#{answer.answer}"
+						update=":form:panelOutput"
+						actionListener="#{votation.vote(answer)}"
+						styleClass="ui-priority-primary pull-right btn btnAnswer"
+						ajax="true" />
+				</ui:repeat>
+			</p:panel>
+		</p:outputPanel>
+	</h:form>
+
+</h:body>
+
+
 </html>

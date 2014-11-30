@@ -1,7 +1,7 @@
 package br.edu.univas.lab6.smartpoll.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +27,7 @@ public class Answer implements java.io.Serializable {
 	private int id;
 	private Question question;
 	private String answer;
-	private Set<Result> results = new HashSet<Result>(0);
+	private List<Result> results = new ArrayList<Result>();
 
 	public Answer() {
 	}
@@ -38,7 +38,7 @@ public class Answer implements java.io.Serializable {
 		this.answer = answer;
 	}
 
-	public Answer(int id, Question question, String answer, Set<Result> results) {
+	public Answer(int id, Question question, String answer, List<Result> results) {
 		this.id = id;
 		this.question = question;
 		this.answer = answer;
@@ -75,11 +75,11 @@ public class Answer implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "answer")
-	public Set<Result> getResults() {
+	public List<Result> getResults() {
 		return this.results;
 	}
 
-	public void setResults(Set<Result> results) {
+	public void setResults(List<Result> results) {
 		this.results = results;
 	}
 

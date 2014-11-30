@@ -1,8 +1,10 @@
 package br.edu.univas.lab6.smartpoll.main;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import br.edu.univas.lab6.smartpoll.entity.Answer;
 import br.edu.univas.lab6.smartpoll.entity.Question;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 import br.edu.univas.lab6.smartpoll.service.QuestionService;
@@ -10,7 +12,6 @@ import br.edu.univas.lab6.smartpoll.service.QuestionService;
 public class MainClass {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		List<Question> questions = new ArrayList<Question>();
 
@@ -22,7 +23,14 @@ public class MainClass {
 
 		for (Question question : questions) {
 			System.out.println(question.getTitle());
+
+			for (Answer answer : question.getAnswers()) {
+				System.out.println(answer.getAnswer());
+			}
+
 		}
+
+		System.out.println();
 
 		simpleEntityManager.close();
 	}

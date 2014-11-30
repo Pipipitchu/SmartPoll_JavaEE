@@ -5,8 +5,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class SimpleEntityManager {
-	private EntityManager entityManager;	
-	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory("smartpoll");
+	private EntityManager entityManager;
+	private static final EntityManagerFactory factory = Persistence
+			.createEntityManagerFactory("smartpoll");
 
 	public SimpleEntityManager() {
 		this.entityManager = factory.createEntityManager();

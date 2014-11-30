@@ -12,15 +12,15 @@
 
 			<h1>Polls</h1>
 
-			<p:accordionPanel value="#{question.allQuestions}" var="q"
+			<p:accordionPanel value="#{listpoll.allQuestions}" var="poll"
 				id="questionsPanel">
-				<p:tab title="#{q.title}">
+				<p:tab title="#{poll.title}">
 					<h:panelGrid columns="2" cellpadding="5" size="85">
 
-						<h:outputText value="#{q.question}" />
+						<h:outputText value="#{poll.question}" />
 						<br />
 						<p:commandButton value="Remove"
-							actionListener="#{question.removeQuestion(q)}"
+							actionListener="#{listpoll.removeQuestion(poll)}"
 							update="questionsPanel">
 							<p:confirm header="Confirmation" message="Are you sure?"
 								icon="ui-icon-alert" />

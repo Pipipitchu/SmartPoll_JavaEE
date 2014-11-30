@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import br.edu.univas.lab6.smartpoll.entity.Question;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 import br.edu.univas.lab6.smartpoll.service.QuestionService;
 
-@ManagedBean(name = "question")
-@SessionScoped
+@ManagedBean(name = "listpoll")
+@ViewScoped
 public class ListPollBean {
 
 	private List<Question> questions = new ArrayList<Question>();
