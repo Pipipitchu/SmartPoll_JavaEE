@@ -17,9 +17,7 @@ import br.edu.univas.lab6.smartpoll.service.UserService;
 @ViewScoped
 public class InsertPollBean {
 
-	private Question question = new Question();
-	// private Answer[] answers = new Answer[4];
-	// private List<Answer> answers = new ArrayList<Answer>();
+	private Question question;
 
 	SimpleEntityManager simpleEntityManager = new SimpleEntityManager();
 	QuestionService questionService = new QuestionService(simpleEntityManager);
@@ -28,9 +26,8 @@ public class InsertPollBean {
 	private int qtdAnswers = 4;
 
 	public InsertPollBean() {
-		for (int i = 0; i < qtdAnswers; i++) {
-			question.addAnswer(new Answer());
-		}
+		question = new Question();
+		createAnswers(question);
 	}
 
 	public Question getQuestion() {
@@ -51,6 +48,15 @@ public class InsertPollBean {
 				null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO,
 						"Successfully registered Poll!", ""));
+		
+		question = new Question();
+		createAnswers(question);
+	}
+
+	private void createAnswers(Question question) {
+		for (int i = 0; i < qtdAnswers; i++) {
+			question.addAnswer(new Answer());
+		}
 	}
 
 }
