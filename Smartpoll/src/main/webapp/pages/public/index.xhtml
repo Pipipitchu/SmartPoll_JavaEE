@@ -18,8 +18,6 @@
 <h:body>
 	<h1 class="title">SmartPoll</h1>
 
-
-
 	<h:form id="form">
 		<p:outputPanel id="panelOutput" columns="1" styleClass="panelOutput">
 
@@ -28,19 +26,19 @@
 			</h1>
 
 			<p:panel columns="1" id="panelQuestions" styleClass="panelQuestions"
-				rendered="#{votation.showQuestions}">
+				rendered="#{votation.showPanelQuestions}">
 
 				<ui:repeat var="question" value="#{votation.allQuestions}">
 					<p:commandButton value="#{question.title}"
 						update=":form:panelOutput"
-						actionListener="#{votation.updateAnswers(question)}"
+						actionListener="#{votation.showAnswers(question)}"
 						styleClass="ui-priority-primary pull-right btn btnQuestion" />
 				</ui:repeat>
 
 			</p:panel>
 
 			<p:panel columns="1" id="panelAnswers" styleClass="panelAnswers"
-				rendered="#{votation.showAnswers}">
+				rendered="#{votation.showPanelAnswers}">
 				<ui:repeat var="answer" value="#{votation.answers}">
 					<p:commandButton value="#{answer.answer}"
 						update=":form:panelOutput"
@@ -51,7 +49,7 @@
 			</p:panel>
 
 			<p:panel columns="1" id="panelResult" styleClass="panelAnswers"
-				rendered="#{votation.showResult}">
+				rendered="#{votation.showPanelResult}">
 				<p:messages id="messages" showDetail="true" autoUpdate="true" />
 
 				<p:commandButton value="View Results"
