@@ -69,6 +69,19 @@ body {
 	border-color: #204d74 !important;
 }
 
+.btnResult {
+	color: #fff !important;
+	background-color: #5cb85c !important;
+	border-color: #4cae4c !important;
+}
+
+.btnResult:hover, .btnResult:focus, .btnResult.focus, .btnResult:active,
+	.btnResult.active {
+	color: #fff !important;
+	background-color: #449d44 !important;
+	border-color: #398439 !important;
+}
+
 .panelOutput {
 	text-align: center !important;
 	background-color: transparent !important;
@@ -80,4 +93,29 @@ body {
 	background-color: transparent !important;
 	border: none !important;
 	margin: 10px auto 0 auto !important;
+}
+
+.links {
+	position: relative !important;
+	left: 50% !important;
+	top: 10% !important;
+	margin-left: -250px !important;
+	width: 500px;
+}
+
+.link {
+	padding-right: 0;
+	padding-left: 0;
+	font-size: 16px;
+	font-weight: bold;
+	color: rgba(255, 255, 255, .75);
+	border-bottom: 2px solid transparent;
+}
+
+.sign {
+	float: left;
+}
+
+.back {
+	float: right;
 }

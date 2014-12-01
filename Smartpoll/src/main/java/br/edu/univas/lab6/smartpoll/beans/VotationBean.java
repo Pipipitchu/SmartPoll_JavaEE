@@ -3,8 +3,10 @@ package br.edu.univas.lab6.smartpoll.beans;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import br.edu.univas.lab6.smartpoll.entity.Answer;
 import br.edu.univas.lab6.smartpoll.entity.Question;
@@ -49,15 +51,25 @@ public class VotationBean {
 		setShowAnswers(Boolean.TRUE);
 	}
 
-	public void vote(Answer answer) {
+	public void insertVote(Answer answer) {
 		Result result = new Result();
 		result.setQuestion(question);
 		result.setAnswer(answer);
 		result.setDateVote(new Date());
 		resultService.save(result);
+		setShowAnswers(Boolean.FALSE);
+		setShowResult(Boolean.TRUE);
+		FacesContext.getCurrentInstance().addMessage(
+				null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO,
+						"Thanks for you vote!", ""));
+	}
+
+	public void backToQuestions() {
+		setSubtitle(INITIAL_MESSAGE);
 		setShowQuestions(Boolean.TRUE);
 		setShowAnswers(Boolean.FALSE);
-
+		setShowResult(Boolean.FALSE);
 	}
 
 	public String getSubtitle() {

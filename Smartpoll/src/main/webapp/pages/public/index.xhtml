@@ -19,6 +19,7 @@
 	<h1 class="title">SmartPoll</h1>
 
 
+
 	<h:form id="form">
 		<p:outputPanel id="panelOutput" columns="1" styleClass="panelOutput">
 
@@ -43,11 +44,30 @@
 				<ui:repeat var="answer" value="#{votation.answers}">
 					<p:commandButton value="#{answer.answer}"
 						update=":form:panelOutput"
-						actionListener="#{votation.vote(answer)}"
+						actionListener="#{votation.insertVote(answer)}"
 						styleClass="ui-priority-primary pull-right btn btnAnswer"
-						ajax="true" />
+						immediate="true" />
 				</ui:repeat>
 			</p:panel>
+
+			<p:panel columns="1" id="panelResult" styleClass="panelAnswers"
+				rendered="#{votation.showResult}">
+				<p:messages id="messages" showDetail="true" autoUpdate="true" />
+
+				<p:commandButton value="View Results"
+					styleClass="ui-priority-primary pull-right btn btnResult"
+					immediate="true" />
+			</p:panel>
+
+			<div class="links">
+				<p:link outcome="/pages/dashboard/index" value="Sign"
+					styleClass="link sign" />
+
+				<p:commandLink update="panelOutput"
+					actionListener="#{votation.backToQuestions}" styleClass="link back">
+					<h:outputText value="Back to Questions" />
+				</p:commandLink>
+			</div>
 		</p:outputPanel>
 	</h:form>
 

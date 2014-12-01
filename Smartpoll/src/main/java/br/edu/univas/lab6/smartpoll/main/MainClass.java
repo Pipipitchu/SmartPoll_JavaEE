@@ -1,7 +1,6 @@
 package br.edu.univas.lab6.smartpoll.main;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import br.edu.univas.lab6.smartpoll.entity.Answer;
@@ -17,9 +16,10 @@ public class MainClass {
 
 		SimpleEntityManager simpleEntityManager = new SimpleEntityManager();
 
-		QuestionService service = new QuestionService(simpleEntityManager);
+		QuestionService questionService = new QuestionService(
+				simpleEntityManager);
 
-		questions = service.findAll();
+		questions = questionService.findAll();
 
 		for (Question question : questions) {
 			System.out.println(question.getTitle());
