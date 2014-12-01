@@ -2,11 +2,11 @@ package br.edu.univas.lab6.smartpoll.dao;
 
 import javax.persistence.EntityManager;
 
-import br.edu.univas.lab6.smartpoll.entity.Users;
+import br.edu.univas.lab6.smartpoll.entity.User;
 
-public class UsersDAO extends GenericDAO<Long, Users>{
+public class UserDAO extends GenericDAO<Long, User>{
 
-	public UsersDAO(EntityManager entityManager) {
+	public UserDAO(EntityManager entityManager) {
 		super(entityManager);
 		// TODO Auto-generated constructor stub
 	}

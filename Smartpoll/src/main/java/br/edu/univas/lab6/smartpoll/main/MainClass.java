@@ -13,6 +13,7 @@ public class MainClass {
 	public static void main(String[] args) {
 
 		List<Question> questions = new ArrayList<Question>();
+		List<Answer> answers = new ArrayList<Answer>();
 
 		SimpleEntityManager simpleEntityManager = new SimpleEntityManager();
 
@@ -23,10 +24,11 @@ public class MainClass {
 
 		for (Question question : questions) {
 			System.out.println(question.getTitle());
+			
+			answers = question.getAnswers();
+			
 
-			for (Answer answer : question.getAnswers()) {
-				System.out.println(answer.getAnswer());
-			}
+			
 
 		}
 

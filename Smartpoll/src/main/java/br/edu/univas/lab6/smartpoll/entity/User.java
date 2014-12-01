@@ -18,24 +18,24 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "users", schema = "public")
-public class Users implements java.io.Serializable {
+public class User implements java.io.Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private Long id;
 	private String name;
 	private String login;
 	private String password;
 	private String email;
 	private List<Question> questions = new ArrayList<Question>();
 
-	public Users() {
+	public User() {
 	}
 
-	public Users(int id, String name, String login, String password,
+	public User(Long id, String name, String login, String password,
 			String email) {
 		this.id = id;
 		this.name = name;
@@ -44,7 +44,7 @@ public class Users implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public Users(int id, String name, String login, String password,
+	public User(Long id, String name, String login, String password,
 			String email, List<Question> questions) {
 		this.id = id;
 		this.name = name;
@@ -58,11 +58,11 @@ public class Users implements java.io.Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_gen")
 	@SequenceGenerator(name = "users_gen", sequenceName = "users_id_seq", allocationSize = 1)
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -102,7 +102,7 @@ public class Users implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	public List<Question> getQuestions() {
 		return questions;
 	}

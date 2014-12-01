@@ -27,7 +27,7 @@ public class Result implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private Long id;
 	private Question question;
 	private Answer answer;
 	private Date dateVote;
@@ -35,7 +35,7 @@ public class Result implements java.io.Serializable {
 	public Result() {
 	}
 
-	public Result(int id, Question question, Answer answer, Date dateVote) {
+	public Result(Long id, Question question, Answer answer, Date dateVote) {
 		this.id = id;
 		this.question = question;
 		this.answer = answer;
@@ -46,11 +46,11 @@ public class Result implements java.io.Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "result_gen")
 	@SequenceGenerator(name = "result_gen", sequenceName = "result_id_seq", allocationSize = 1)
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

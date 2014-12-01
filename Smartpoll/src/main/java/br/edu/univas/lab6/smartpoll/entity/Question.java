@@ -32,8 +32,8 @@ public class Question implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int id;
-	private Users users;
+	private Long id;
+	private User user;
 	private String title;
 	private String question;
 	private Date dateQuestion;
@@ -44,21 +44,21 @@ public class Question implements java.io.Serializable {
 	public Question() {
 	}
 
-	public Question(int id, Users users, String title, String question,
+	public Question(Long id, User user, String title, String question,
 			Date dateQuestion, Date expirationDate) {
 		this.id = id;
-		this.users = users;
+		this.user = user;
 		this.title = title;
 		this.question = question;
 		this.dateQuestion = dateQuestion;
 		this.expirationDate = expirationDate;
 	}
 
-	public Question(int id, Users users, String title, String question,
+	public Question(Long id, User user, String title, String question,
 			Date dateQuestion, Date expirationDate, List<Answer> answers,
 			Set<Result> results) {
 		this.id = id;
-		this.users = users;
+		this.user = user;
 		this.title = title;
 		this.question = question;
 		this.dateQuestion = dateQuestion;
@@ -71,22 +71,22 @@ public class Question implements java.io.Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_gen")
 	@SequenceGenerator(name = "question_gen", sequenceName = "question_id_seq", allocationSize = 1)
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", nullable = false)
-	public Users getUsers() {
-		return this.users;
+	public User getUser() {
+		return this.user;
 	}
 
-	public void setUsers(Users users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Column(name = "title", nullable = false, length = 500)
@@ -143,6 +143,10 @@ public class Question implements java.io.Serializable {
 
 	public void setResults(Set<Result> results) {
 		this.results = results;
+	}
+	
+	public void addAnswer(Answer answer){
+		answers.add(answer);
 	}
 
 }
