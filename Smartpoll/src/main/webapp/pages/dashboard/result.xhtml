@@ -18,7 +18,7 @@
 					<h:panelGrid columns="1" cellpadding="5" size="85">
 
 						<h:outputText value="#{poll.question}" />
-						<p:commandButton value="Pie Chart" update="form:pieChart"
+						<p:commandButton value="Pie Chart" update=":pieChart"
 							oncomplete="PF('pieChart').show();"
 							actionListener="#{result.createPieChart(poll)}" />
 					</h:panelGrid>
