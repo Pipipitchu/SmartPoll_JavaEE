@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:decorate template="/template/layout.xhtml">
+	<ui:define name="content">
+
+		<h:form>
+
+			<h1>Results</h1>
+
+			<p:accordionPanel value="#{result.allQuestions}" var="poll"
+				id="questionsPanel">
+				<p:tab title="#{poll.title}">
+					<h:panelGrid columns="1" cellpadding="5" size="85">
+
+						<h:outputText value="#{poll.question}" />
+						<p:commandButton value="Pie Chart" update="form:pieChart"
+							oncomplete="PF('pieChart').show();"
+							actionListener="#{result.createPieChart(poll)}" />
+					</h:panelGrid>
+				</p:tab>
+			</p:accordionPanel>
+		</h:form>
+	</ui:define>
+</ui:decorate>
+
+
+<p:dialog header="Result - Pie Chart" widgetVar="pieChart"
+	resizable="true" width="640" height="480" showEffect="explode"
+	hideEffect="explode" dynamic="true">
+	<h:outputText value="This is a Modal Dialog." />
+
+	<p:chart id="pieChart" type="pie" model="#{result.pieChart}"
+		style="width:620px;height:460px" />
+</p:dialog>
+
+</html>
