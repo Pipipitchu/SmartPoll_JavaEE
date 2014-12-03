@@ -1,7 +1,8 @@
 @CHARSET "ISO-8859-1";
 
 body{
-	background: #FFF url("#{resource['images:background.jpg']}") no-repeat fixed center;
+	background: #FFF url("#{resource['images:poll2.jpg']}") no-repeat fixed center;
+	background-size: 130% 100%; 
 }
 
 .ui-layout-container {
