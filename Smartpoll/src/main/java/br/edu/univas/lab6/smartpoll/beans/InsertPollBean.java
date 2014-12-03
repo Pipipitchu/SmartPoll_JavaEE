@@ -1,5 +1,6 @@
 package br.edu.univas.lab6.smartpoll.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
@@ -15,7 +16,12 @@ import br.edu.univas.lab6.smartpoll.service.UserService;
 
 @ManagedBean(name = "insert")
 @ViewScoped
-public class InsertPollBean {
+public class InsertPollBean implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Question question;
 
@@ -48,7 +54,7 @@ public class InsertPollBean {
 				null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO,
 						"Successfully registered Poll!", ""));
-		
+
 		question = new Question();
 		createAnswers(question);
 	}

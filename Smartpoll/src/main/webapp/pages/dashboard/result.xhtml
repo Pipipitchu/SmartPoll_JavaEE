@@ -15,12 +15,14 @@
 			<p:accordionPanel value="#{result.allQuestions}" var="poll"
 				id="questionsPanel">
 				<p:tab title="#{poll.title}">
-					<h:panelGrid columns="1" cellpadding="5" size="85">
-
-						<h:outputText value="#{poll.question}" />
+					<h:outputText value="#{poll.question}" />
+					<h:panelGrid columns="2" cellpadding="5" size="85">
 						<p:commandButton value="Pie Chart" update=":pieChart"
 							oncomplete="PF('pieChart').show();"
 							actionListener="#{result.createPieChart(poll)}" />
+						<p:commandButton value="Bar Chart" update=":barChart"
+							oncomplete="PF('barChart').show();"
+							actionListener="#{result.createBarChart(poll)}" />
 					</h:panelGrid>
 				</p:tab>
 			</p:accordionPanel>
@@ -30,12 +32,21 @@
 
 
 <p:dialog header="Result - Pie Chart" widgetVar="pieChart"
-	resizable="true" width="640" height="480" showEffect="explode"
-	hideEffect="explode" dynamic="true">
-	<h:outputText value="This is a Modal Dialog." />
+	resizable="true" showEffect="explode" hideEffect="explode"
+	dynamic="true">
 
 	<p:chart id="pieChart" type="pie" model="#{result.pieChart}"
 		style="width:620px;height:460px" />
+
+</p:dialog>
+
+<p:dialog header="Result - Bar Chart" widgetVar="barChart"
+	resizable="true" showEffect="explode" hideEffect="explode"
+	dynamic="true">
+
+	<p:chart id="barChart" type="bar" model="#{result.barChart}"
+		style="width:620px;height:460px" />
+
 </p:dialog>
 
 </html>

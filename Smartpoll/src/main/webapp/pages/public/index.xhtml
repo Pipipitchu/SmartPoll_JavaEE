@@ -54,7 +54,7 @@
 
 				<p:commandButton value="View Results"
 					styleClass="ui-priority-primary pull-right btn btnResult"
-					immediate="true" />
+					update=":pieChart" onclick="PF('pieChart').show();" />
 			</p:panel>
 
 			<div class="links">
@@ -68,6 +68,15 @@
 			</div>
 		</p:outputPanel>
 	</h:form>
+
+	<p:dialog header="Result - Pie Chart" widgetVar="pieChart"
+		resizable="true" showEffect="explode" hideEffect="explode"
+		dynamic="true">
+
+		<p:chart id="pieChart" type="pie" model="#{votation.pieChart}"
+			style="width:620px;height:460px" />
+
+	</p:dialog>
 
 </h:body>
 

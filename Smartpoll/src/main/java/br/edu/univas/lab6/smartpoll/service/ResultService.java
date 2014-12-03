@@ -1,12 +1,18 @@
 package br.edu.univas.lab6.smartpoll.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import br.edu.univas.lab6.smartpoll.dao.ResultDAO;
 import br.edu.univas.lab6.smartpoll.entity.Result;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 
-public class ResultService {
+public class ResultService implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private ResultDAO dao;
 

@@ -1,5 +1,6 @@
 package br.edu.univas.lab6.smartpoll.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,14 @@ import br.edu.univas.lab6.smartpoll.service.QuestionService;
 
 @ManagedBean(name = "listpoll")
 @ViewScoped
-public class ListPollBean {
+public class ListPollBean implements Serializable {
+	
+	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private List<Question> questions = new ArrayList<Question>();
 

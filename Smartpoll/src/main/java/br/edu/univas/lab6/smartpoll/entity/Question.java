@@ -2,9 +2,7 @@ package br.edu.univas.lab6.smartpoll.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,7 +37,7 @@ public class Question implements java.io.Serializable {
 	private Date dateQuestion;
 	private Date expirationDate;
 	private List<Answer> answers = new ArrayList<Answer>();
-	private Set<Result> results = new HashSet<Result>(0);
+	private List<Result> results = new ArrayList<Result>();
 
 	public Question() {
 	}
@@ -56,7 +54,7 @@ public class Question implements java.io.Serializable {
 
 	public Question(Long id, User user, String title, String question,
 			Date dateQuestion, Date expirationDate, List<Answer> answers,
-			Set<Result> results) {
+			List<Result> results) {
 		this.id = id;
 		this.user = user;
 		this.title = title;
@@ -137,15 +135,15 @@ public class Question implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
-	public Set<Result> getResults() {
+	public List<Result> getResults() {
 		return this.results;
 	}
 
-	public void setResults(Set<Result> results) {
+	public void setResults(List<Result> results) {
 		this.results = results;
 	}
-	
-	public void addAnswer(Answer answer){
+
+	public void addAnswer(Answer answer) {
 		answers.add(answer);
 	}
 

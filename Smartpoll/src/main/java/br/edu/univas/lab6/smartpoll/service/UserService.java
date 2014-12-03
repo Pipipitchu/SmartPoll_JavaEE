@@ -1,12 +1,18 @@
 package br.edu.univas.lab6.smartpoll.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import br.edu.univas.lab6.smartpoll.dao.UserDAO;
 import br.edu.univas.lab6.smartpoll.entity.User;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 
-public class UserService {
+public class UserService implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private UserDAO dao;
 
@@ -27,7 +33,7 @@ public class UserService {
 			simpleEntityManager.rollBack();
 		}
 	}
-	
+
 	public void delete(User user) {
 		try {
 			simpleEntityManager.beginTransaction();
@@ -42,8 +48,8 @@ public class UserService {
 	public List<User> findAll() {
 		return dao.findAll();
 	}
-	
-	public User getById(Long id){
+
+	public User getById(Long id) {
 		return dao.getById(id);
 	}
 }

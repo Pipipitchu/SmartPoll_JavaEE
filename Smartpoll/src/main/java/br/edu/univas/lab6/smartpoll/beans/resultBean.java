@@ -1,11 +1,16 @@
 package br.edu.univas.lab6.smartpoll.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
 
 import br.edu.univas.lab6.smartpoll.entity.Answer;
@@ -15,7 +20,12 @@ import br.edu.univas.lab6.smartpoll.service.QuestionService;
 
 @ManagedBean(name = "result")
 @ViewScoped
-public class resultBean {
+public class resultBean implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private List<Question> questions = new ArrayList<Question>();
 
@@ -24,8 +34,12 @@ public class resultBean {
 
 	private PieChartModel pieChart;
 
+	private BarChartModel barChart;
+
 	public resultBean() {
 		pieChart = new PieChartModel();
+		barChart = new BarChartModel();
+		// createBarChart();
 	}
 
 	public List<Question> getQuestions() {
@@ -41,6 +55,39 @@ public class resultBean {
 		return questions;
 	}
 
+	public void createBarChart(Question question) {
+		barChart = new BarChartModel();
+
+		int max = 1;
+
+		ChartSeries answerSeries = new ChartSeries();
+		answerSeries.setLabel("Answers");
+
+		for (Answer answer : question.getAnswers()) {
+			int amount = answer.getResults().size();
+			answerSeries.set(answer.getAnswer(), amount);
+
+			if (amount > max) {
+				max = amount + 1;
+			}
+		}
+
+		barChart.addSeries(answerSeries);
+
+		barChart.setTitle("Bar Chart");
+		barChart.setLegendPosition("ne");
+		barChart.isAnimate();
+
+		Axis xAxis = barChart.getAxis(AxisType.X);
+		xAxis.setLabel("Answer");
+
+		Axis yAxis = barChart.getAxis(AxisType.Y);
+		yAxis.setLabel("Amount");
+		yAxis.setMin(0);
+		yAxis.setMax(max);
+
+	}
+
 	public void createPieChart(Question question) {
 		pieChart = new PieChartModel();
 
@@ -48,11 +95,7 @@ public class resultBean {
 			pieChart.set(answer.getAnswer(), answer.getResults().size());
 		}
 
-		// pieChart.set("Brand 1", 540);
-		// pieChart.set("Brand 2", 325);
-		// pieChart.set("Brand 3", 702);
-		// pieChart.set("Brand 4", 421);
-
+		pieChart.setShowDataLabels(true);
 		pieChart.setTitle(question.getTitle());
 		pieChart.setLegendPosition("w");
 	}
@@ -63,6 +106,14 @@ public class resultBean {
 
 	public void setPieChart(PieChartModel pieChart) {
 		this.pieChart = pieChart;
+	}
+
+	public BarChartModel getBarChart() {
+		return barChart;
+	}
+
+	public void setBarChart(BarChartModel barChart) {
+		this.barChart = barChart;
 	}
 
 }

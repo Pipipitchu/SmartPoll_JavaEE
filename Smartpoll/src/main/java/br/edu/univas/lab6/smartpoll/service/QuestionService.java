@@ -1,5 +1,6 @@
 package br.edu.univas.lab6.smartpoll.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import br.edu.univas.lab6.smartpoll.dao.AnswerDAO;
@@ -8,8 +9,13 @@ import br.edu.univas.lab6.smartpoll.entity.Answer;
 import br.edu.univas.lab6.smartpoll.entity.Question;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 
-public class QuestionService {
-
+public class QuestionService implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private QuestionDAO dao;
 	private AnswerDAO answerDAO;
 
