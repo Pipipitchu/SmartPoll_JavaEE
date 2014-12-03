@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.univas.lab6.smartpoll.entity.Question;
+import br.edu.univas.lab6.smartpoll.entity.User;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
-import br.edu.univas.lab6.smartpoll.service.QuestionService;
+import br.edu.univas.lab6.smartpoll.service.UserService;
 
 public class MainClass {
 
@@ -15,7 +16,7 @@ public class MainClass {
 
 		SimpleEntityManager simpleEntityManager = new SimpleEntityManager();
 
-		QuestionService questionService = new QuestionService(
+		/*QuestionService questionService = new QuestionService(
 				simpleEntityManager);
 
 		questions = questionService.findByMonthVote(12);
@@ -26,8 +27,13 @@ public class MainClass {
 			System.out.println(question.getResults().size());
 
 		}
-
+   */
 		System.out.println();
+		
+		UserService service = new UserService(simpleEntityManager);
+		User user = service.findByEmailPassword("tscodeler@gmail.com", "camila");
+		
+		System.out.println(user.getName());
 
 		simpleEntityManager.close();
 	}

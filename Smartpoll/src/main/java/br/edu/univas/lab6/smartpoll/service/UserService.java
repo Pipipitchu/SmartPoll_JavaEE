@@ -52,4 +52,8 @@ public class UserService implements Serializable {
 	public User findById(Long id) {
 		return dao.getById(id);
 	}
+	
+	public User findByEmailPassword(String email, String password) {
+		return dao.findByEmailPassword(email, password);
+	}
 }
