@@ -12,6 +12,7 @@ import org.primefaces.context.RequestContext;
 import br.edu.univas.lab6.smartpoll.entity.User;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 import br.edu.univas.lab6.smartpoll.service.UserService;
+import br.edu.univas.lab6.smartpoll.util.Encryption;
 import br.edu.univas.lab6.smartpoll.util.JSFMessage;
 
 @ManagedBean(name = "login")
@@ -32,9 +33,13 @@ public class LoginBean implements Serializable{
 	SimpleEntityManager simpleEntityManager = new SimpleEntityManager();
 	UserService userService = new UserService(simpleEntityManager);
 	
+	Encryption encryption = new Encryption();
+	
 	public String loginValidity() {
 		
-		User user = userService.findByEmailPassword(email, password);
+		String passwordEncrypted = encryption.md5(password);
+		
+		User user = userService.findByEmailPassword(email, passwordEncrypted);
 		
 		if(user != null) {
 			return "index.xhtml?faces-redirect=true";
@@ -61,6 +66,4 @@ public class LoginBean implements Serializable{
 		this.password = password;
 	}
 	
-	
-
 }

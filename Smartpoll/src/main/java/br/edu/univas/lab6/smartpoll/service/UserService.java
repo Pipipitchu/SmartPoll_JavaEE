@@ -1,6 +1,9 @@
 package br.edu.univas.lab6.smartpoll.service;
 
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import br.edu.univas.lab6.smartpoll.dao.UserDAO;
@@ -52,8 +55,9 @@ public class UserService implements Serializable {
 	public User findById(Long id) {
 		return dao.getById(id);
 	}
-	
+
 	public User findByEmailPassword(String email, String password) {
 		return dao.findByEmailPassword(email, password);
 	}
+
 }

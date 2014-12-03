@@ -1,18 +1,14 @@
 package br.edu.univas.lab6.smartpoll.main;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import br.edu.univas.lab6.smartpoll.entity.Question;
-import br.edu.univas.lab6.smartpoll.entity.User;
-import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
-import br.edu.univas.lab6.smartpoll.service.UserService;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MainClass {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoSuchAlgorithmException {
 
-		List<Question> questions = new ArrayList<Question>();
+		/*List<Question> questions = new ArrayList<Question>();
 
 		SimpleEntityManager simpleEntityManager = new SimpleEntityManager();
 
@@ -27,7 +23,7 @@ public class MainClass {
 			System.out.println(question.getResults().size());
 
 		}
-   */
+   
 		System.out.println();
 		
 		UserService service = new UserService(simpleEntityManager);
@@ -35,6 +31,14 @@ public class MainClass {
 		
 		System.out.println(user.getName());
 
-		simpleEntityManager.close();
+		simpleEntityManager.close(); */
+		
+		String password = "admin";
+		
+		MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+		messageDigest.update(password.getBytes(), 0, password.length());
+		BigInteger bigInteger = new BigInteger(1, messageDigest.digest());
+		System.out.println(String.format("%1$032x", bigInteger));
+
 	}
 }
