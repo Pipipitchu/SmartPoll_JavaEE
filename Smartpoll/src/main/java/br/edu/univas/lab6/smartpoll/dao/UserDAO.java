@@ -8,7 +8,6 @@ public class UserDAO extends GenericDAO<Long, User>{
 
 	public UserDAO(EntityManager entityManager) {
 		super(entityManager);
-		// TODO Auto-generated constructor stub
 	}
 	
 }

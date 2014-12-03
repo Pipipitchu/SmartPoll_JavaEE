@@ -8,6 +8,5 @@ public class AnswerDAO extends GenericDAO<Long, Answer>{
 
 	public AnswerDAO(EntityManager entityManager) {
 		super(entityManager);
-		// TODO Auto-generated constructor stub
 	}
 }

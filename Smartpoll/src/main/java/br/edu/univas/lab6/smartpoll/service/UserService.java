@@ -49,7 +49,7 @@ public class UserService implements Serializable {
 		return dao.findAll();
 	}
 
-	public User getById(Long id) {
+	public User findById(Long id) {
 		return dao.getById(id);
 	}
 }

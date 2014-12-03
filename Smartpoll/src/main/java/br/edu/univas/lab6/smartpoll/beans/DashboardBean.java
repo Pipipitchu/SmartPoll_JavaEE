@@ -105,7 +105,7 @@ public class DashboardBean implements Serializable {
 
 	private int getCurrentMonth() {
 		Calendar cal = Calendar.getInstance();
-		return cal.get(Calendar.MONTH);
+		return cal.get(Calendar.MONTH)+1;
 	}
 
 	public Integer getMonth() {

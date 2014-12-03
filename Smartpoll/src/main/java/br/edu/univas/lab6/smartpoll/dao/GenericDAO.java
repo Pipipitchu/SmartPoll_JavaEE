@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 
 @SuppressWarnings("unchecked")
 public class GenericDAO<PK, T> {
-	private EntityManager entityManager;
+	public EntityManager entityManager;
 
 	public GenericDAO(EntityManager entityManager) {
 		this.entityManager = entityManager;

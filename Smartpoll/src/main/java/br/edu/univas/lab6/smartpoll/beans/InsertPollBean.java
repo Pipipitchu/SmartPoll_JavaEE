@@ -47,7 +47,7 @@ public class InsertPollBean implements Serializable {
 
 	public void insertQuestion() {
 		question.setDateQuestion(new Date());
-		question.setUser(userService.getById((long) 1));
+		question.setUser(userService.findById((long) 1));
 		questionService.save(question);
 
 		FacesContext.getCurrentInstance().addMessage(

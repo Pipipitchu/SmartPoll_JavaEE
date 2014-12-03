@@ -10,12 +10,12 @@ import br.edu.univas.lab6.smartpoll.entity.Question;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 
 public class QuestionService implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private QuestionDAO dao;
 	private AnswerDAO answerDAO;
 
@@ -56,5 +56,9 @@ public class QuestionService implements Serializable {
 
 	public List<Question> findAll() {
 		return dao.findAll();
+	}
+
+	public List<Question> findByMonthVote(Integer month) {
+		return dao.findByMonthVote(month);
 	}
 }
