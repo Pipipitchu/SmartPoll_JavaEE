@@ -18,7 +18,7 @@ public class JSFMessage {
 	}
 
 	public FacesMessage createMessage(Severity severity, String mensagemErro) {
-		return new FacesMessage(severity, mensagemErro, mensagemErro);
+		return new FacesMessage(severity, mensagemErro, "");
 	}
 
 	private void addMessageToJsfContext(FacesMessage facesMessage) {

@@ -13,6 +13,7 @@ import br.edu.univas.lab6.smartpoll.entity.Question;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 import br.edu.univas.lab6.smartpoll.service.QuestionService;
 import br.edu.univas.lab6.smartpoll.service.UserService;
+import br.edu.univas.lab6.smartpoll.util.JSFMessage;
 
 @ManagedBean(name = "insert")
 @ViewScoped
@@ -24,6 +25,8 @@ public class InsertPollBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Question question;
+	
+	JSFMessage jsfMessage = new JSFMessage();
 
 	SimpleEntityManager simpleEntityManager = new SimpleEntityManager();
 	QuestionService questionService = new QuestionService(simpleEntityManager);
@@ -49,11 +52,8 @@ public class InsertPollBean implements Serializable {
 		question.setDateQuestion(new Date());
 		question.setUser(userService.findById((long) 1));
 		questionService.save(question);
-
-		FacesContext.getCurrentInstance().addMessage(
-				null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO,
-						"Successfully registered Poll!", ""));
+		
+		jsfMessage.sendInfoMessageToUser("Successfully Registered Poll");
 
 		question = new Question();
 		createAnswers(question);

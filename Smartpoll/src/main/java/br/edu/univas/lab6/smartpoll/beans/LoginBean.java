@@ -56,8 +56,14 @@ public class LoginBean implements Serializable {
 	public String doLogout() {
 
 		loggedIn = false;
-		jsfMessage.sendInfoMessageToUser("Logoff success!");
+		jsfMessage.sendInfoMessageToUser("Logoff Successfully!");
+		password = "";
+		email = "";
 		return "/pages/login.xhtml";
+	}
+	
+	public String backToQuestions() {
+		return "/pages/public/index.xhtml";
 	}
 
 	public String getEmail() {

@@ -14,27 +14,28 @@
 	<p:growl id="growl" sticky="true" showDetail="true" />
 
 	<h:form style="width: 500px; margin: 150px auto auto auto">
-		<p:panel id="panel" header="Sign In"
-			style="margin-bottom:10px;">
+		<p:panel id="panel" header="Sign In" style="margin-bottom:10px;">
 			<p:messages id="messages" />
 			<h:panelGrid columns="1" cellpadding="5">
 				<h:outputLabel for="email" />
 				<p:inputText type="email" name="email" value="#{login.email}"
 					size="40" placeholder="E-mail" required="true"
-					requiredMessage="Please, Insert the E-mail" id="email"/>
+					requiredMessage="Please, Insert the E-mail" id="email" />
 
 				<h:outputLabel for="password" />
 				<p:inputText type="password" required="true"
 					value="#{login.password}" placeholder="Password"
 					requiredMessage="Please, Insert the Password" size="40"
-					name="password" id="password"/>
+					name="password" id="password" />
 
 			</h:panelGrid>
 		</p:panel>
 
 		<p:commandButton type="submit" value="Sign In" update="panel"
 			action="#{login.loginValidity()}" ajax="false" />
-		<p:commandButton type="reset" value="Cancel" update="panel" ajax="false" />
+		<p:commandButton type="reset" value="Cancel" update="panel"
+			ajax="false" />
+		<h:commandLink action="#{login.backToQuestions()}" value="Back to Questions" />
 	</h:form>
 
 </h:body>

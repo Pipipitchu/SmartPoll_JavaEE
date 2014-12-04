@@ -22,6 +22,7 @@ import br.edu.univas.lab6.smartpoll.entity.Result;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 import br.edu.univas.lab6.smartpoll.service.QuestionService;
 import br.edu.univas.lab6.smartpoll.service.ResultService;
+import br.edu.univas.lab6.smartpoll.util.JSFMessage;
 
 @ManagedBean(name = "votation")
 @ViewScoped
@@ -45,6 +46,8 @@ public class VotationBean implements Serializable {
 
 	private Question question;
 	private Answer answer;
+	
+	JSFMessage jsfMessage = new JSFMessage();
 
 	SimpleEntityManager simpleEntityManager = new SimpleEntityManager();
 
@@ -77,8 +80,7 @@ public class VotationBean implements Serializable {
 			createPieChart(question);
 
 			setShowPanelQuestions(Boolean.FALSE);
-			showMessage(FacesMessage.SEVERITY_ERROR,
-					"You already participated in this poll!");
+			jsfMessage.sendErrorMessageToUser("You already participated in this poll!");
 			setShowPanelResult(Boolean.TRUE);
 		}
 	}
@@ -96,7 +98,7 @@ public class VotationBean implements Serializable {
 		setShowPanelAnswers(Boolean.FALSE);
 		setShowPanelResult(Boolean.TRUE);
 
-		showMessage(FacesMessage.SEVERITY_INFO, "Thanks for you vote!");
+		jsfMessage.sendInfoMessageToUser("Thanks for you vote!");
 	}
 
 	public void backToQuestions() {
