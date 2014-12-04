@@ -12,26 +12,31 @@
 
 		<p:fieldset legend="Amount of votes per month"
 			style="margin-bottom:20px">
-			<h:panelGrid columns="2" cellpadding="5">
-				<h:outputLabel for="months" value="Month:" />
-				<p:selectOneMenu id="months" value="#{dashboard.month}"
-					effect="fold">
-					<f:selectItem itemLabel="January" itemValue="1" />
-					<f:selectItem itemLabel="February" itemValue="2" />
-					<f:selectItem itemLabel="March" itemValue="3" />
-					<f:selectItem itemLabel="April" itemValue="4" />
-					<f:selectItem itemLabel="May" itemValue="5" />
-					<f:selectItem itemLabel="June" itemValue="6" />
-					<f:selectItem itemLabel="July" itemValue="7" />
-					<f:selectItem itemLabel="August" itemValue="8" />
-					<f:selectItem itemLabel="September" itemValue="9" />
-					<f:selectItem itemLabel="October" itemValue="10" />
-					<f:selectItem itemLabel="November" itemValue="11" />
-					<f:selectItem itemLabel="December" itemValue="12" />
-				</p:selectOneMenu>
-			</h:panelGrid>
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel for="months" value="Month:" />
+					<p:selectOneMenu id="months" value="#{dashboard.month}"
+						effect="fold">
+						<f:selectItem itemLabel="January" itemValue="1" />
+						<f:selectItem itemLabel="February" itemValue="2" />
+						<f:selectItem itemLabel="March" itemValue="3" />
+						<f:selectItem itemLabel="April" itemValue="4" />
+						<f:selectItem itemLabel="May" itemValue="5" />
+						<f:selectItem itemLabel="June" itemValue="6" />
+						<f:selectItem itemLabel="July" itemValue="7" />
+						<f:selectItem itemLabel="August" itemValue="8" />
+						<f:selectItem itemLabel="September" itemValue="9" />
+						<f:selectItem itemLabel="October" itemValue="10" />
+						<f:selectItem itemLabel="November" itemValue="11" />
+						<f:selectItem itemLabel="December" itemValue="12" />
+						<p:ajax event="change" listener="#{dashboard.createLineChart}"
+							update=":lineChart" />
+					</p:selectOneMenu>
 
-<!-- 			<p:chart id="lineChart" type="line" model="#{dashboard.lineChart}" style="height:300px;" /> -->
+				</h:panelGrid>
+			</h:form>
+			<p:chart id="lineChart" type="line" model="#{dashboard.lineChart}"
+				style="height:300px;" />
 
 		</p:fieldset>
 

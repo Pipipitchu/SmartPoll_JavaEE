@@ -2,6 +2,8 @@ package br.edu.univas.lab6.smartpoll.beans;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -14,9 +16,9 @@ import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.LineChartModel;
 
 import br.edu.univas.lab6.smartpoll.entity.Question;
-import br.edu.univas.lab6.smartpoll.entity.Result;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 import br.edu.univas.lab6.smartpoll.service.QuestionService;
+import br.edu.univas.lab6.smartpoll.service.ResultService;
 
 @ManagedBean(name = "dashboard")
 @ViewScoped
@@ -28,84 +30,66 @@ public class DashboardBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer month;
-	private Integer maxValue;
+	private Long maxValue;
 	private LineChartModel lineChart;
 	private SimpleEntityManager simpleEntityManager;
 	private QuestionService questionService;
-	private List<Question> questions;
+	private ResultService resultService;
 
 	public DashboardBean() {
-		maxValue = 1;
+		maxValue = 0L;
 		simpleEntityManager = new SimpleEntityManager();
 		questionService = new QuestionService(simpleEntityManager);
+		resultService = new ResultService(simpleEntityManager);
 		setMonth(getCurrentMonth());
 		createLineChart();
 	}
 
-	private void createLineChart() {
-		lineChart = initCategoryModel();
-		lineChart.setTitle("Category Chart");
-		lineChart.setLegendPosition("e");
-		lineChart.setShowPointLabels(true);
-		lineChart.getAxes().put(AxisType.X, new CategoryAxis("Questions"));
-		Axis yAxis = lineChart.getAxis(AxisType.Y);
-		yAxis.setLabel("Amount");
-		yAxis.setMin(0);
-		yAxis.setMax(maxValue);
+	public void createLineChart() {
+		lineChart = new LineChartModel();
 
-	}
-
-	private LineChartModel initCategoryModel() {
-		LineChartModel model = new LineChartModel();
-
-		questions = questionService.findAll();
-		List<Result> votes;
+		List<Question> questions = questionService.findAll();
 
 		ChartSeries serie;
 
-		int amount = 0;
-
 		for (Question question : questions) {
+
 			serie = new ChartSeries();
 			serie.setLabel(question.getTitle());
+			for (int day = 1; day <= lastDayMonth(month); day++) {
+				Long amount = 0L;
 
-			votes = question.getResults();
-			
-	
+				amount = resultService.countVotesPerDate(question, month, day);
 
-			amount = votes.size();
-
-			if (amount > maxValue) {
-				maxValue = amount;
+				if (amount > maxValue) {
+					maxValue = amount;
+				}
+				serie.set(day, amount);
 			}
-
+			lineChart.addSeries(serie);
 		}
 
-		ChartSeries boys = new ChartSeries();
-		boys.setLabel("Boys");
-		boys.set("2004", 120);
-		boys.set("2005", 100);
-		boys.set("2006", 44);
-		boys.set("2007", 150);
-		boys.set("2008", 25);
-
-		ChartSeries girls = new ChartSeries();
-		girls.setLabel("Girls");
-		girls.set("2004", 52);
-		girls.set("2005", 60);
-		girls.set("2006", 110);
-		girls.set("2007", 90);
-		girls.set("2008", 120);
-
-		model.addSeries(boys);
-		model.addSeries(girls);
-
-		return model;
+		lineChart.setTitle("Amount of votes per month");
+		lineChart.setLegendPosition("e");
+		lineChart.setShowPointLabels(true);
+		lineChart.getAxes().put(AxisType.X, new CategoryAxis("Days"));
+		Axis yAxis = lineChart.getAxis(AxisType.Y);
+		yAxis.setLabel("Amount");
+		yAxis.setMin(0);
+		yAxis.setMax(maxValue + (maxValue / 2));
 	}
 
 	private int getCurrentMonth() {
 		Calendar cal = Calendar.getInstance();
+		System.out.println(cal.get(Calendar.MONTH));
 		return cal.get(Calendar.MONTH)+1;
+	}
+
+	private Integer lastDayMonth(Integer month) {
+		Calendar dateFim = new GregorianCalendar();
+		dateFim.setTime(new Date());
+		dateFim.set(Calendar.MONTH, month-1);
+		return dateFim.getActualMaximum(Calendar.DAY_OF_MONTH);
 	}
 
 	public Integer getMonth() {

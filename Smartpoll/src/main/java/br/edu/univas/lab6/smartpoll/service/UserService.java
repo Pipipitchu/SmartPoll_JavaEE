@@ -1,9 +1,6 @@
 package br.edu.univas.lab6.smartpoll.service;
 
 import java.io.Serializable;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import br.edu.univas.lab6.smartpoll.dao.UserDAO;

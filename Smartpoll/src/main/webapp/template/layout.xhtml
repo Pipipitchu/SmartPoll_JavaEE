@@ -47,7 +47,7 @@
 				</h:form>
 				<p:commandButton value="About System" type="button"
 					onclick="PF('dlg1').show();" icon="ui-icon-help"
-					style="margin-top: 230px;" />
+					style="margin-top: 230px" />
 
 			</ui:insert>
 		</p:layoutUnit>
@@ -60,14 +60,16 @@
 		</p:layoutUnit>
 
 		<p:layoutUnit position="south" size="30">
-			<p:dialog header="About" widgetVar="dlg1" minHeight="30">
-				<h:outputText
-					value="This web system was developed to provide a dynamic way to create and manage polls. It provides interactive graphics to the administrator.
-Developed by: Rafael William and Thiago Scodeler" />
-			</p:dialog>
 			<center>© Copyright 2014 SmartPoll</center>
 		</p:layoutUnit>
 
 	</p:layout>
+
+	<p:dialog header="About" widgetVar="dlg1" minHeight="30" width="300"
+		modal="true">
+		<h:outputText
+			value="This web system was developed to provide a dynamic way to create and manage polls. It provides interactive graphics to the administrator.
+Developed by: Rafael William and Thiago Scodeler" />
+	</p:dialog>
 </h:body>
 </html>

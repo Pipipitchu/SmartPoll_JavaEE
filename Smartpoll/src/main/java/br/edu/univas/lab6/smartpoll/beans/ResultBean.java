@@ -20,7 +20,7 @@ import br.edu.univas.lab6.smartpoll.service.QuestionService;
 
 @ManagedBean(name = "result")
 @ViewScoped
-public class resultBean implements Serializable {
+public class ResultBean implements Serializable {
 
 	/**
 	 * 
@@ -36,7 +36,7 @@ public class resultBean implements Serializable {
 
 	private BarChartModel barChart;
 
-	public resultBean() {
+	public ResultBean() {
 		pieChart = new PieChartModel();
 		barChart = new BarChartModel();
 		// createBarChart();
@@ -76,6 +76,8 @@ public class resultBean implements Serializable {
 
 		barChart.setTitle("Bar Chart");
 		barChart.setLegendPosition("ne");
+		barChart.getSeriesColors();
+		barChart.setShowPointLabels(true);
 		barChart.isAnimate();
 
 		Axis xAxis = barChart.getAxis(AxisType.X);

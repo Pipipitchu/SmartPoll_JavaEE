@@ -20,6 +20,19 @@ public class QuestionDAO extends GenericDAO<Long, Question> {
 			questions = (List<Question>) entityManager
 					.createNamedQuery("Question.findByMonthVote")
 					.setParameter("month", month).getResultList();
+
+			// remove registers duplicated
+			for (int i = 0; i < questions.size(); i++) {
+				Object a = questions.get(i);
+				for (int j = i + 1; j < questions.size(); j++) {
+					Object b = questions.get(j);
+					if (a.equals(b)) {
+						questions.remove(j);
+						j--;
+					}
+				}
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

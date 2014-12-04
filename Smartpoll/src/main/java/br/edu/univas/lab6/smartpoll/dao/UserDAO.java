@@ -18,7 +18,6 @@ public class UserDAO extends GenericDAO<Long, User>{
 		try {
 			return (User) query.getSingleResult();
 		} catch (NoResultException e) {
-			// TODO: handle exception
 			return null;
 		}
 	}

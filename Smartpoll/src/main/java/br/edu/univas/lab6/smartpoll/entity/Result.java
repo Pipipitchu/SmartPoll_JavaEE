@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -20,6 +21,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "result", schema = "public")
+@NamedQuery(name="Result.countVotesPerDate",query="SELECT COUNT(vote) FROM Result vote WHERE FUNCTION('MONTH',vote.dateVote) = :month AND FUNCTION('DAY',vote.dateVote) = :day AND vote.question = :question")
 public class Result implements java.io.Serializable {
 
 	/**

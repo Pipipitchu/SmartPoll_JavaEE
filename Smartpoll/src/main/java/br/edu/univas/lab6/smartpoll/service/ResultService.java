@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import br.edu.univas.lab6.smartpoll.dao.ResultDAO;
+import br.edu.univas.lab6.smartpoll.entity.Question;
 import br.edu.univas.lab6.smartpoll.entity.Result;
 import br.edu.univas.lab6.smartpoll.managers.SimpleEntityManager;
 
@@ -47,5 +48,9 @@ public class ResultService implements Serializable {
 
 	public List<Result> findAll() {
 		return dao.findAll();
+	}
+	
+	public Long countVotesPerDate(Question question, int month, int day) {
+		return dao.countVotesPerDate(question, month, day);
 	}
 }
