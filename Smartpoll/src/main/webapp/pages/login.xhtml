@@ -35,8 +35,12 @@
 			action="#{login.loginValidity()}" ajax="false" />
 		<p:commandButton type="reset" value="Cancel" update="panel"
 			ajax="false" />
-		<h:commandLink action="#{login.backToQuestions()}" value="Back to Questions" />
-	</h:form>
 
+
+	</h:form>
+	<h:form style="width: 500px; margin: auto 120px auto auto">
+		<p:commandButton type="submit" value="Back to Questions"
+			update="panel" action="#{login.backToQuestions()}" ajax="false" />
+	</h:form>
 </h:body>
 </html>

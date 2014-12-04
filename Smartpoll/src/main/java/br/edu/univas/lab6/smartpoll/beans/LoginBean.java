@@ -63,7 +63,7 @@ public class LoginBean implements Serializable {
 	}
 	
 	public String backToQuestions() {
-		return "/pages/public/index.xhtml";
+		return "/pages/public/index";
 	}
 
 	public String getEmail() {

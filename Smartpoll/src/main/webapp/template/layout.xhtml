@@ -39,11 +39,10 @@
 							<p:menuitem value="Change password" icon="ui-icon-key"
 								url="/pages/dashboard/changePassword.xhtml" />
 							<p:menuitem value="Logoff" icon="ui-icon-locked"
-								url="/pages/dashboard/login.xhtml" />
-
+								action="#{login.doLogout}" ajax="true"/>
 						</p:submenu>
 					</p:menu>
-					<h:commandLink action="#{login.doLogout}" value="Logout" />
+					<h:commandLink action="#{login.doLogout}" value="" rendered="false" />
 				</h:form>
 				<p:commandButton value="About System" type="button"
 					onclick="PF('dlg1').show();" icon="ui-icon-help"
@@ -71,5 +70,12 @@
 			value="This web system was developed to provide a dynamic way to create and manage polls. It provides interactive graphics to the administrator.
 Developed by: Rafael William and Thiago Scodeler" />
 	</p:dialog>
+
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+		<p:commandButton value="Yes" type="button"
+			styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		<p:commandButton value="No" type="button"
+			styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+	</p:confirmDialog>
 </h:body>
 </html>
