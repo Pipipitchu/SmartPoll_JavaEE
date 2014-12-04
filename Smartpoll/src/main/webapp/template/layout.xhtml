@@ -40,19 +40,31 @@
 								url="/pages/dashboard/changePassword.xhtml" />
 							<p:menuitem value="Logoff" icon="ui-icon-locked"
 								url="/pages/dashboard/login.xhtml" />
+
 						</p:submenu>
 					</p:menu>
+
 				</h:form>
+				<p:commandButton value="About System" type="button"
+					onclick="PF('dlg1').show();" icon="ui-icon-help"
+					style="margin-top: 230px;" />
+
 			</ui:insert>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center">
 			<ui:insert name="content">
 				//page code
+				
 			</ui:insert>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="south" size="30">
+			<p:dialog header="About" widgetVar="dlg1" minHeight="30">
+				<h:outputText
+					value="This web system was developed to provide a dynamic way to create and manage polls. It provides interactive graphics to the administrator.
+Developed by: Rafael William and Thiago Scodeler" />
+			</p:dialog>
 			<center>© Copyright 2014 SmartPoll</center>
 		</p:layoutUnit>
 
