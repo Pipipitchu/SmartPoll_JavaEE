@@ -2,8 +2,10 @@ package br.edu.univas.lab6.smartpoll.beans;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 
@@ -15,40 +17,47 @@ import br.edu.univas.lab6.smartpoll.util.JSFMessage;
 
 @ManagedBean(name = "login")
 @SessionScoped
-public class LoginBean implements Serializable{
+public class LoginBean implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private String email;
-	
+
 	private String password;
-	
+
 	private boolean loggedIn;
-	
+
 	JSFMessage jsfMessage = new JSFMessage();
-	
+
 	SimpleEntityManager simpleEntityManager = new SimpleEntityManager();
 	UserService userService = new UserService(simpleEntityManager);
-	
+
 	Encryption encryption = new Encryption();
-	
+
 	public String loginValidity() {
-		
+
 		String passwordEncrypted = encryption.md5(password);
-		
+
 		User user = userService.findByEmailPassword(email, passwordEncrypted);
-		
-		if(user != null) {
+
+		if (user != null) {
 			loggedIn = true;
 			return "/pages/dashboard/index.xhtml?faces-redirect=true";
 		}
-		
+
 		RequestContext.getCurrentInstance().update("growl");
 		jsfMessage.sendErrorMessageToUser("Email or Password Invalid!!!");
 		return "";
+	}
+
+	public String doLogout() {
+
+		loggedIn = false;
+		jsfMessage.sendInfoMessageToUser("Logoff success!");
+		return "/pages/login.xhtml";
 	}
 
 	public String getEmail() {
@@ -74,7 +83,5 @@ public class LoginBean implements Serializable{
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
-	
-	
-	
+
 }
