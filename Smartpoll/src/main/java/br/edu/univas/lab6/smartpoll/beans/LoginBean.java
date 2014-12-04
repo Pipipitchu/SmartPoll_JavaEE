@@ -2,10 +2,8 @@ package br.edu.univas.lab6.smartpoll.beans;
 
 import java.io.Serializable;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.SessionScoped;
 
 import org.primefaces.context.RequestContext;
 
@@ -16,7 +14,7 @@ import br.edu.univas.lab6.smartpoll.util.Encryption;
 import br.edu.univas.lab6.smartpoll.util.JSFMessage;
 
 @ManagedBean(name = "login")
-@ViewScoped
+@SessionScoped
 public class LoginBean implements Serializable{
 
 	/**
@@ -27,6 +25,8 @@ public class LoginBean implements Serializable{
 	private String email;
 	
 	private String password;
+	
+	private boolean loggedIn;
 	
 	JSFMessage jsfMessage = new JSFMessage();
 	
@@ -42,7 +42,8 @@ public class LoginBean implements Serializable{
 		User user = userService.findByEmailPassword(email, passwordEncrypted);
 		
 		if(user != null) {
-			return "index.xhtml?faces-redirect=true";
+			loggedIn = true;
+			return "/pages/dashboard/index.xhtml?faces-redirect=true";
 		}
 		
 		RequestContext.getCurrentInstance().update("growl");
@@ -65,5 +66,15 @@ public class LoginBean implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
+	
+	
 	
 }
