@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage.Severity;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -144,11 +142,6 @@ public class VotationBean implements Serializable {
 		pieChart.setShowDataLabels(true);
 		pieChart.setTitle(question.getTitle());
 		pieChart.setLegendPosition("w");
-	}
-
-	private void showMessage(Severity severity, String message) {
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(severity, message, ""));
 	}
 
 	public String getSubtitle() {

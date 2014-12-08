@@ -3,10 +3,8 @@ package br.edu.univas.lab6.smartpoll.beans;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 import br.edu.univas.lab6.smartpoll.entity.Answer;
 import br.edu.univas.lab6.smartpoll.entity.Question;
