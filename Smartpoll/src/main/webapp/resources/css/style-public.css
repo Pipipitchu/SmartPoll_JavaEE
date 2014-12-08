@@ -9,12 +9,12 @@ body {
 
 .title {
 	margin: 100px 0 0 0;
-	font-size: 60px;
+	font-size: 50px;
 }
 
 .subtitle {
 	margin: 20px 0 15px 0;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 .btn {
@@ -110,6 +110,7 @@ body {
 	font-weight: bold;
 	color: rgba(255, 255, 255, .75);
 	border-bottom: 2px solid transparent;
+	text-decoration: none;
 }
 
 .sign {
