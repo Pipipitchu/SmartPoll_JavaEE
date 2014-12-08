@@ -29,6 +29,8 @@ public class LoginBean implements Serializable {
 	private String password;
 
 	private boolean loggedIn;
+	
+	private User userLogged;
 
 	JSFMessage jsfMessage = new JSFMessage();
 
@@ -45,6 +47,7 @@ public class LoginBean implements Serializable {
 
 		if (user != null) {
 			loggedIn = true;
+			this.userLogged = user;
 			return "/pages/dashboard/index.xhtml?faces-redirect=true";
 		}
 
@@ -88,6 +91,14 @@ public class LoginBean implements Serializable {
 
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
+	}
+	
+	public User getUserLogged() {
+		return userLogged;
+	}
+	
+	public void setUserLogged(User userLogged) {
+		this.userLogged = userLogged;
 	}
 
 }

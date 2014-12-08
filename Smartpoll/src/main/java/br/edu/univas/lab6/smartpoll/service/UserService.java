@@ -57,4 +57,14 @@ public class UserService implements Serializable {
 		return dao.findByEmailPassword(email, password);
 	}
 
+	public void update(User user) {
+		try {
+			simpleEntityManager.beginTransaction();
+			dao.update(user);
+			simpleEntityManager.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			simpleEntityManager.rollBack();
+		}
+	}
 }
