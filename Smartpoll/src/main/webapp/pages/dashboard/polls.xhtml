@@ -19,7 +19,7 @@
 
 						<h:outputText value="#{poll.question}" />
 						<br />
-						<p:commandButton value="Remove"
+						<p:commandButton value="Remove" icon="ui-icon-close"
 							actionListener="#{listpoll.removeQuestion(poll)}"
 							update="questionsPanel">
 							<p:confirm header="Confirmation" message="Are you sure?"

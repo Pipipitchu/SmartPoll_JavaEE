@@ -17,41 +17,41 @@
 					closable="true" />
 				<h:panelGrid id="panel-grid" columns="2" cellpadding="10">
 					<h:outputLabel for="title" value="Title: " />
-					<p:inputText id="title" type="text" name="title" size="85"
+					<p:inputText id="title" type="text" name="title" size="100"
 						placeholder="Enter Title" required="true"
 						requiredMessage="Please, Insert the Title"
 						value="#{insert.question.title}" />
 
 					<h:outputLabel for="date" value="Expiration Date: " />
-					<p:calendar id="date" pattern="dd-MM-yyyy" mask="true" size="85"
+					<p:calendar id="date" pattern="dd-MM-yyyy" mask="true" size="100"
 						placeholder="__-__-____" value="#{insert.question.expirationDate}" />
 
 					<h:outputLabel for="question" value="Question: " />
-					<p:inputText id="question" type="text" name="question" size="85"
+					<p:inputText id="question" type="text" name="question" size="100"
 						placeholder="Enter Question" required="true"
 						requiredMessage="Please, Insert the Question"
 						value="#{insert.question.question}" />
 
 					<h:outputLabel for="answer1" value="Answers:" />
-					<p:inputText id="answer1" type="text" size="85"
+					<p:inputText id="answer1" type="text" size="100"
 						placeholder="Enter Answer" required="true"
 						requiredMessage="Please, Insert the Answer"
 						value="#{insert.question.answers[0].answer}" />
 
 					<h:outputLabel for="answer2" value="" />
-					<p:inputText id="answer2" type="text" size="85"
+					<p:inputText id="answer2" type="text" size="100"
 						placeholder="Enter Answer" required="true"
 						requiredMessage="Please, Insert the Answer"
 						value="#{insert.question.answers[1].answer}" />
 
 					<h:outputLabel for="answer3" value="" />
-					<p:inputText id="answer3" type="text" size="85"
+					<p:inputText id="answer3" type="text" size="100"
 						placeholder="Enter Answer" required="true"
 						requiredMessage="Please, Insert the Answer"
 						value="#{insert.question.answers[2].answer}" />
 
 					<h:outputLabel for="answer4" value="" />
-					<p:inputText id="answer4" type="text" size="85"
+					<p:inputText id="answer4" type="text" size="100"
 						placeholder="Enter Answer" required="true"
 						requiredMessage="Please, Insert the Answer"
 						value="#{insert.question.answers[3].answer}" />
