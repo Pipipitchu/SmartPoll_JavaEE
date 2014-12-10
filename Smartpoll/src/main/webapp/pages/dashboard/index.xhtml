@@ -38,6 +38,10 @@
 			<p:chart id="lineChart" type="line" model="#{dashboard.lineChart}"
 				style="height:300px;" />
 
+			<p:commandButton value="Print" type="button" icon="ui-icon-print">
+				<p:printer target="lineChart"/>
+			</p:commandButton>
+
 		</p:fieldset>
 
 	</ui:define>

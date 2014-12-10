@@ -40,13 +40,37 @@
 
 </p:dialog>
 
+
 <p:dialog header="Result - Bar Chart" widgetVar="barChart"
 	resizable="true" showEffect="explode" hideEffect="explode"
 	dynamic="true">
 
 	<p:chart id="barChart" type="bar" model="#{result.barChart}"
-		style="width:620px;height:460px" />
+		style="width:620px;height:460px" widgetVar="chart">
+
+		<p:commandButton type="button" value="Export" icon="ui-icon-extlink"
+			onclick="exportChart()" />
+
+		<p:commandButton value="Print" type="button" icon="ui-icon-print">
+			<p:printer target="output" />
+		</p:commandButton>
+
+
+		<script type="text/javascript">
+function exportChart() {
+    //export image
+    $('#output').empty().append(PF('chart').exportAsImage());
+ 
+    //show the dialog
+    PF('barChart').show();
+}
+</script>
+
+	</p:chart>
+
+	<p:outputPanel id="output"/>
 
 </p:dialog>
 
 </html>
+
