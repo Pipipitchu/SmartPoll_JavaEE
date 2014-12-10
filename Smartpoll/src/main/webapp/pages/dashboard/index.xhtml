@@ -36,11 +36,50 @@
 				</h:panelGrid>
 			</h:form>
 			<p:chart id="lineChart" type="line" model="#{dashboard.lineChart}"
-				style="height:300px;" />
+				style="height:300px;" widgetVar="Lnchart" />
 
-			<p:commandButton value="Print" type="button" icon="ui-icon-print">
-				<p:printer target="lineChart"/>
+			<p:commandButton type="button" value="Export" icon="ui-icon-extlink"
+				onclick="exportChart()" />
+
+			<p:dialog widgetVar="imageChart" showEffect="fade"
+				header="Chart as an Image" resizable="true">
+				<p:outputPanel id="output" />
+			</p:dialog>
+
+			<script type="text/javascript">
+				function exportChart() {
+    			//export image
+    				$('#output').empty().append(PF('Lnchart').exportAsImage());
+ 
+    			//show the dialog
+   					 PF('imageChart').show();
+				}
+			</script>
+
+			<p:commandButton value="Print" type="button" icon="ui-icon-print"
+				onclick="exportChartPrint()">
+				<p:printer target="outputPrint" />
 			</p:commandButton>
+
+
+			<p:dialog widgetVar="outputPrint" showEffect="fade"
+				header="Print Result" resizable="true">
+				<p:commandButton value="Print" type="button" icon="ui-icon-print">
+					<p:printer target="outputPrint" />
+				</p:commandButton>
+
+				<p:outputPanel id="outputPrint" />
+			</p:dialog>
+
+			<script type="text/javascript">
+				function exportChartPrint() {
+    			//export image
+    				$('#outputPrint').empty().append(PF('Lnchart').exportAsImage());
+ 
+    			//show the dialog
+   				    PF('outputPrint').show();
+				}
+			</script>
 
 		</p:fieldset>
 

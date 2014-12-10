@@ -35,8 +35,25 @@
 	resizable="true" showEffect="explode" hideEffect="explode"
 	dynamic="true">
 
+	<p:commandButton value="Print" type="button" icon="ui-icon-print"
+		onclick="exportPieChart()">
+		<p:printer target="output" />
+	</p:commandButton>
+
+
 	<p:chart id="pieChart" type="pie" model="#{result.pieChart}"
-		style="width:620px;height:460px" />
+		style="width:620px;height:460px" widgetVar="pieChar" />
+
+	<script type="text/javascript">
+		function exportPieChart() {
+		    //export image
+		    $('#output').empty().append(PF('pieChar').exportAsImage());
+		 
+		    //show the dialog
+		    PF('pieChart').hide();
+		    PF('outputPrint').show();
+		}
+	</script>
 
 </p:dialog>
 
@@ -45,32 +62,38 @@
 	resizable="true" showEffect="explode" hideEffect="explode"
 	dynamic="true">
 
+	<!-- 	<p:commandButton type="button" value="Export" icon="ui-icon-extlink" -->
+	<!-- 		onclick="exportChart()" /> -->
+
+	<p:commandButton value="Print" type="button" icon="ui-icon-print"
+		onclick="exportBarChart()">
+		<p:printer target="output" />
+	</p:commandButton>
+
 	<p:chart id="barChart" type="bar" model="#{result.barChart}"
-		style="width:620px;height:460px" widgetVar="chart">
+		style="width:620px;height:460px" widgetVar="barChar" />
 
-		<p:commandButton type="button" value="Export" icon="ui-icon-extlink"
-			onclick="exportChart()" />
-
-		<p:commandButton value="Print" type="button" icon="ui-icon-print">
-			<p:printer target="output" />
-		</p:commandButton>
-
-
-		<script type="text/javascript">
-function exportChart() {
-    //export image
-    $('#output').empty().append(PF('chart').exportAsImage());
- 
-    //show the dialog
-    PF('barChart').show();
-}
-</script>
-
-	</p:chart>
-
-	<p:outputPanel id="output"/>
-
+	<script type="text/javascript">
+		function exportBarChart() {
+		    //export image
+		    $('#output').empty().append(PF('barChar').exportAsImage());
+		 
+		    //show the dialog
+		    PF('barChart').hide();
+		    PF('outputPrint').show();
+		}
+	</script>
 </p:dialog>
+
+<p:dialog widgetVar="outputPrint" showEffect="fade"
+	header="Print Result" resizable="true">
+	<p:commandButton value="Print" type="button" icon="ui-icon-print">
+		<p:printer target="output" />
+	</p:commandButton>
+
+	<p:outputPanel id="output" />
+</p:dialog>
+
 
 </html>
 
