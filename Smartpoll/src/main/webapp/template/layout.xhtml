@@ -18,7 +18,8 @@
 	<p:layout fullPage="true">
 
 		<p:layoutUnit position="north" size="100">
-			<h1 style="text-align: center">SMARTPOLL</h1>
+			<p:graphicImage library="images" name="icon.png" style="float:left;" height="80" />
+			<h1>SMARTPOLL</h1>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="west" min-size="200">
@@ -39,7 +40,7 @@
 							<p:menuitem value="Change password" icon="ui-icon-key"
 								url="/pages/dashboard/changePassword.xhtml" />
 							<p:menuitem value="Logoff" icon="ui-icon-locked"
-								action="#{login.doLogout}" ajax="true"/>
+								action="#{login.doLogout}" ajax="true" />
 						</p:submenu>
 					</p:menu>
 					<h:commandLink action="#{login.doLogout}" value="" rendered="false" />
