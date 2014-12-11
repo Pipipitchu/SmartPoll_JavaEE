@@ -45,7 +45,7 @@ public class DashboardBean implements Serializable {
 	}
 
 	public void createLineChart() {
-		Long maxValue = 0L;
+		Long maxValue = 1L;
 		
 		lineChart = new LineChartModel();
 
