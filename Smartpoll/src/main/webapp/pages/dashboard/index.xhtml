@@ -32,47 +32,22 @@
 						<p:ajax event="change" listener="#{dashboard.createLineChart}"
 							update=":lineChart" />
 					</p:selectOneMenu>
-
 				</h:panelGrid>
 			</h:form>
+
 			<p:chart id="lineChart" type="line" model="#{dashboard.lineChart}"
 				style="height:300px;" widgetVar="Lnchart" />
 
 			<p:commandButton type="button" value="Export" icon="ui-icon-extlink"
-				onclick="exportChart()" />
-
-			<p:dialog widgetVar="imageChart" showEffect="fade"
-				header="Chart as an Image" resizable="true">
-				<p:outputPanel id="output" />
-			</p:dialog>
-
-			<script type="text/javascript">
-				function exportChart() {
-    			//export image
-    				$('#output').empty().append(PF('Lnchart').exportAsImage());
- 
-    			//show the dialog
-   					 PF('imageChart').show();
-				}
-			</script>
+				onclick="showDialogChart()" />
 
 			<p:commandButton value="Print" type="button" icon="ui-icon-print"
-				onclick="exportChartPrint()">
+				onclick="showDialogChart()">
 				<p:printer target="outputPrint" />
 			</p:commandButton>
 
-
-			<p:dialog widgetVar="outputPrint" showEffect="fade"
-				header="Print Result" resizable="true">
-				<p:commandButton value="Print" type="button" icon="ui-icon-print">
-					<p:printer target="outputPrint" />
-				</p:commandButton>
-
-				<p:outputPanel id="outputPrint" />
-			</p:dialog>
-
 			<script type="text/javascript">
-				function exportChartPrint() {
+				function showDialogChart() {
     			//export image
     				$('#outputPrint').empty().append(PF('Lnchart').exportAsImage());
  
@@ -85,5 +60,14 @@
 
 	</ui:define>
 </ui:decorate>
+
+<p:dialog widgetVar="outputPrint" header="Print Result"
+	showEffect="explode" hideEffect="explode" modal="true">
+	<p:commandButton value="Print" type="button" icon="ui-icon-print">
+		<p:printer target="outputPrint" />
+	</p:commandButton>
+	<p:outputPanel id="outputPrint" />
+</p:dialog>
+
 
 </html>
