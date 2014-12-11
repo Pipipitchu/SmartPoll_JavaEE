@@ -30,14 +30,13 @@ public class DashboardBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer month;
-	private Long maxValue;
 	private LineChartModel lineChart;
 	private SimpleEntityManager simpleEntityManager;
 	private QuestionService questionService;
 	private ResultService resultService;
 
 	public DashboardBean() {
-		maxValue = 0L;
+
 		simpleEntityManager = new SimpleEntityManager();
 		questionService = new QuestionService(simpleEntityManager);
 		resultService = new ResultService(simpleEntityManager);
@@ -46,6 +45,8 @@ public class DashboardBean implements Serializable {
 	}
 
 	public void createLineChart() {
+		Long maxValue = 0L;
+		
 		lineChart = new LineChartModel();
 
 		List<Question> questions = questionService.findAll();
@@ -70,25 +71,26 @@ public class DashboardBean implements Serializable {
 		}
 
 		lineChart.setTitle("Amount of votes per month");
-		lineChart.setLegendPosition("e");
+		lineChart.setLegendPosition("ne");
 		lineChart.setShowPointLabels(true);
+		lineChart.setShowDatatip(true);
 		lineChart.getAxes().put(AxisType.X, new CategoryAxis("Days"));
 		Axis yAxis = lineChart.getAxis(AxisType.Y);
 		yAxis.setLabel("Amount");
 		yAxis.setMin(0);
-		yAxis.setMax(maxValue + (maxValue / 2));
+		yAxis.setMax(maxValue + (maxValue / 3));
 	}
 
 	private int getCurrentMonth() {
 		Calendar cal = Calendar.getInstance();
 		System.out.println(cal.get(Calendar.MONTH));
-		return cal.get(Calendar.MONTH)+1;
+		return cal.get(Calendar.MONTH) + 1;
 	}
 
 	private Integer lastDayMonth(Integer month) {
 		Calendar dateFim = new GregorianCalendar();
 		dateFim.setTime(new Date());
-		dateFim.set(Calendar.MONTH, month-1);
+		dateFim.set(Calendar.MONTH, month - 1);
 		return dateFim.getActualMaximum(Calendar.DAY_OF_MONTH);
 	}
 

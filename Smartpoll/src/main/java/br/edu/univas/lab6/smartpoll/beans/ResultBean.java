@@ -81,12 +81,12 @@ public class ResultBean implements Serializable {
 		barChart.isAnimate();
 
 		Axis xAxis = barChart.getAxis(AxisType.X);
-		xAxis.setLabel("Answer");
+		xAxis.setLabel("Answers");
 
 		Axis yAxis = barChart.getAxis(AxisType.Y);
 		yAxis.setLabel("Amount");
 		yAxis.setMin(0);
-		yAxis.setMax(max);
+		yAxis.setMax(max+(max/3));
 
 	}
 
